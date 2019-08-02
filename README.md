@@ -1,4 +1,4 @@
-## 基于vue nuxt element-ui 打造，采用服务器端渲染技术，更利于seo[博客](http://bw31d.com "博客")
+## 基于vue nuxt element-ui 打造，采用服务器端渲染技术，更利于seo[线上预览](https://bw31d.com "线上预览")
 
 ## 安装
 
@@ -59,7 +59,7 @@ pm2 start id
 
 ```
 server {
-	listen 80;
+  listen 80;
 	server_name  your domain;
   root /var/www/html/layadmin-blog-ui;
   index  index.php index.html index.htm;
