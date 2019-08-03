@@ -99,11 +99,11 @@ if (process.server) {
 }
 ```
 
-## 有问题加微信
+## 加qq群大家一起交流
 
-微信号：buptzlk
+![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/WechatIMG2.jpeg)
 
 ## 需要后端接口代码和后台管理系统请加微信
 
-微信号：buptzlk
+![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/weixin.jpeg)
 
