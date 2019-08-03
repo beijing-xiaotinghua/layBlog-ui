@@ -1,4 +1,4 @@
-## 基于vue nuxt element-ui 打造，采用服务器端渲染技术，更利于seo[线上预览](https://bw31d.com "线上预览")
+## 基于vue nuxt element-ui 打造，采用服务器端渲染ssr技术，更利于seo[线上预览](https://bw31d.com "线上预览")
 
 ## 效果图
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/blog.gif)
