@@ -98,6 +98,9 @@ if (process.server) {
   options.baseURL = 'http://api.bw31d.com'
 }
 ```
+## 后台管理系统截图
+![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/WechatIMG6.jpeg)
+![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/WechatIMG8.jpeg)
 
 ## 加qq群大家一起交流
 
