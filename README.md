@@ -1,7 +1,7 @@
 ## 基于vue nuxt element-ui 打造，采用服务器端渲染技术，更利于seo[线上预览](https://bw31d.com "线上预览")
 
 ## 效果图
-![image](http://api.bw31d.com/upload/image/blog.gif)
+![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/blog.gif)
 ## 安装
 
 ```
