@@ -1,4 +1,4 @@
-## 基于vue nuxt element-ui 打造，采用服务器端渲染技术，更利于seo[线上预览](https://bw31d.com "线上预览")
+## 基于vue nuxt element-ui 打造，采用服务器端渲染ssr技术，更利于seo[线上预览](https://bw31d.com "线上预览")
 
 ## 效果图
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/blog.gif)
@@ -98,6 +98,9 @@ if (process.server) {
   options.baseURL = 'http://api.bw31d.com'
 }
 ```
+## 后台管理系统截图
+![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/WechatIMG6.jpeg)
+![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/WechatIMG8.jpeg)
 
 ## 加qq群大家一起交流
 
@@ -106,4 +109,7 @@ if (process.server) {
 ## 需要后端接口代码和后台管理系统请加微信
 
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/weixin.jpeg)
+
+## 授权说明
+此项目仅供参考学习，商业用途，请联系作者授权
 
