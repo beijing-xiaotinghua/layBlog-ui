@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let options = {}
 if (process.server) {
-  options.baseURL = 'http://api.bw31d.com'
+  options.baseURL = process.env.apiUrl
 }
 
 export default axios.create(options)

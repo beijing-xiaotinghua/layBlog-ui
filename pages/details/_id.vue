@@ -3,6 +3,12 @@
     <transition name="fade">
       <Loading v-if="isLoading"></Loading>
     </transition>
+    <div id="qrCode">
+      <canvas
+        :id="data.id"
+        style="display:none;opacity: 0.9;z-index: 999;position: absolute;left:70px"
+      ></canvas>
+    </div>
     <div class="layui-row layui-col-space40">
       <div class="layui-col-sm8">
         <div class="detail-main">
@@ -12,11 +18,15 @@
                 <i class="layui-icon layui-icon-news-weibo"></i>
               </a>
             </li>-->
-            <!-- <li class="wechat">
+            <li class="wechat">
               <a href>
-                <i class="layui-icon layui-icon-news-wechat"></i>
+                <i
+                  class="layui-icon layui-icon-news-wechat"
+                  @mouseenter="useqrcode(data.id)"
+                  @mouseleave="deleteQrcode(data.id)"
+                ></i>
               </a>
-            </li>-->
+            </li>
             <!-- <li class="space">
               <a href="javascript:;">
                 <i class="layui-icon layui-icon-news-space"></i>
@@ -94,7 +104,12 @@
                 <i class="el-icon-loading"></i>
               </div>
             </div>
-            <p :class="{'hide': lastpage}" class="lastpagetip" style="color:#999" v-if="commentList.length">没有更多评论了...</p>
+            <p
+              :class="{'hide': lastpage}"
+              class="lastpagetip"
+              style="color:#999"
+              v-if="commentList.length"
+            >没有更多评论了...</p>
           </div>
         </div>
       </div>
@@ -147,6 +162,7 @@ import Comment from "@/components/Comment";
 import Sidebar from "@/components/sidebar";
 import "../../assets/hybrid.css";
 import Loading from "@/components/Loading";
+import QRCode from "qrcode";
 
 dateFormat();
 export default {
@@ -380,6 +396,21 @@ export default {
             });
           }
         });
+    },
+    useqrcode(id) {
+      document.getElementById(id).style.display = "block";
+      var canvas = document.getElementById(id);
+      QRCode.toCanvas(
+        canvas,
+        process.env.homeUrl + `/details/${id}`,
+        function(error) {
+          if (error) console.error(error);
+          document.getElementById(id).style.display = "block";
+        }
+      );
+    },
+    deleteQrcode(id) {
+      document.getElementById(id).style.display = "none";
     }
   },
   beforeDestroy() {
@@ -389,7 +420,8 @@ export default {
   components: {
     Comment,
     Sidebar,
-    Loading
+    Loading,
+    QRCode
   },
   beforeDestroy() {}
 };

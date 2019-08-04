@@ -84,7 +84,7 @@ export default {
       var canvas = document.getElementById(id);
       QRCode.toCanvas(
         canvas,
-        `https://www.bw31d.com/flashnews/${id}`,
+        process.env.homeUrl + `/flashnews/${id}`,
         function(error) {
           if (error) console.error(error);
           document.getElementById(id).style.display = "block";
