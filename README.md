@@ -110,3 +110,6 @@ if (process.server) {
 
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/weixin.jpeg)
 
+## 授权说明
+此项目仅供参考学习，商业用途，请联系作者授权
+
