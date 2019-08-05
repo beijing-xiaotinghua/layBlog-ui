@@ -111,9 +111,10 @@ if (process.server) {
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/weixin.jpeg)
 
 ## 授权说明
-此项目仅供参考学习，商业用途，请联系作者授权
+此项目仅供参考学习，商业用途，请联系作者授权，此源码禁止传播。
 
 ## 下一步开发计划
 1. 关注功能
 2. 私信功能
 3. 加入es搜索引擎，提供全文检索功能
+
