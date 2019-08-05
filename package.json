@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "1.0.1",
   "description": "blog vue ssr",
-  "author": "hzy",
+  "author": "buptzlk",
   "private": true,
   "scripts": {
     "dev": "nuxt",
