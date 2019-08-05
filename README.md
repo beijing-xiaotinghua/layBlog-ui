@@ -107,6 +107,7 @@ if (process.server) {
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/WechatIMG2.jpeg)
 
 ## 需要后端接口代码和后台管理系统联系作者购买（399元）
+购买之后即代表授权整套项目，可以用作商业项目，但是禁止二次销售，传播源码；
 
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/weixin.jpeg)
 
