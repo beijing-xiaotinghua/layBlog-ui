@@ -106,7 +106,7 @@ if (process.server) {
 
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/WechatIMG2.jpeg)
 
-## 需要后端接口代码和后台管理系统请加微信
+## 需要后端接口代码和后台管理系统联系作者购买（399元）
 
 ![image](https://github.com/beijing-xiaotinghua/layBlog-ui/blob/master/assets/images/weixin.jpeg)
 
