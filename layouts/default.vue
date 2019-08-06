@@ -78,9 +78,9 @@ export default {
     };
   },
   created() {
-    this.getUserInfo();
   },
   mounted() {
+    this.userinfo = JSON.parse(this.$cookie.get('user'));
     this.taglist();
     var winwinth = window.innerWidth;
     if (this.$route.params.tag === undefined && this.$route.fullPath === "/") {
@@ -90,25 +90,6 @@ export default {
     }
   },
   methods: {
-    getUserInfo() {
-      axios.interceptors.request.use(
-        config => {
-          config.headers["Authorization"] =
-            "Bearer " + this.$cookie.get("token"); // 请求头带上token
-          return config;
-        },
-        error => {
-          return Promise.reject(error);
-        }
-      );
-      axios.get("/api/userInfo").then(respone => {
-        if (respone.data.code === 0) {
-          this.userinfo = respone.data.data;
-        } else {
-          this.userinfo = null;
-        }
-      });
-    },
     taglist() {
       axios.get("/api/category/list").then(respone => {
         const tagList = respone.data.data;

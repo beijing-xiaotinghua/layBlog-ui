@@ -83,6 +83,7 @@ export default {
         .then(respone => {
           if (respone.data && respone.data.code === 0) {
             this.$cookie.set("token", respone.data.data.token);
+            this.$cookie.set("user", JSON.stringify(respone.data.data.user));
             this.$message({
               message: respone.data.msg,
               type: "success",

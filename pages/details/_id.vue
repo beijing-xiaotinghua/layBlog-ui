@@ -35,7 +35,7 @@
             <li class="num">
               <a>
                 <i class="layui-icon layui-icon-news-review2"></i>
-                <span>{{user.comments}}</span>
+                <span>{{author.comments}}</span>
               </a>
             </li>
             <li class="collect num">
@@ -53,7 +53,7 @@
               {{data.user.name}}
               <b>{{data.created_at}}</b>
               <i>浏览 {{data.views}}</i>
-              <i>评论 {{user.comments}}</i>
+              <i>评论 {{author.comments}}</i>
             </div>
             <div class="detail-body" v-html="data.content"></div>
           </div>
@@ -70,12 +70,12 @@
           <div class="detail-comment">
             <p>
               全部评论
-              <span>{{user.comments}}</span>
+              <span>{{author.comments}}</span>
             </p>
             <div class="addComment layui-form">
-              <div class="img">
+              <div class="img" v-if="userinfo">
                 <span>
-                  <img :src="user.avatar" />
+                  <img :src="userinfo.avatar" />
                 </span>
               </div>
               <div class="content">
@@ -117,14 +117,14 @@
       <div class="layui-col-sm4">
         <div class="detail-side">
           <div class="person">
-            <a :href="'/user/' + user.id" class="img">
-              <img :src="user.avatar" />
+            <a :href="'/user/' + author.id" class="img">
+              <img :src="author.avatar" />
             </a>
             <span class="name">
               <a :href="'/user/' + data.user.id">{{data.user.name}}</a>
             </span>
-            <span class="num">{{user.newsNum}}篇文章</span>
-            <span class="name">{{user.introduce}}</span>
+            <span class="num">{{author.newsNum}}篇文章</span>
+            <span class="name">{{author.introduce}}</span>
           </div>
           <div class="news-index contentBot">
             <Sidebar
@@ -214,7 +214,8 @@ export default {
       scrollloadlast: false,
       content: "",
       liked: false,
-      user: [],
+      author: [],
+      userinfo: {},
       isLoading: true
     };
   },
@@ -239,20 +240,23 @@ export default {
     //设置延迟执行
     this.isLoading = false;
   },
+  beforeMount() {
+  },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
     if (window.loading) {
       window.loading.close();
     }
-    this.token = this.$cookie.get("token");
+    this.token = this.$cookie.get("token"); // 判断是否登陆
+    this.userinfo = JSON.parse(this.$cookie.get('user'))
     this.isLike(this.$route.params.id);
-    this.getUserInfo(this.$route.params.id);
+    this.getAuthorInfo(this.$route.params.id);
   },
   methods: {
-    getUserInfo(id) {
+    getAuthorInfo(id) {
       axios.get(`/api/userInfo/${id}`).then(respone => {
         if (respone.data && respone.data.code === 0) {
-          this.user = respone.data.user;
+          this.author = respone.data.user;
         }
       });
     },
@@ -266,21 +270,18 @@ export default {
         error => {
           return Promise.reject(error);
         }
-      );
-      axios.post(`/api/news/isLiked/${id}`).then(respone => {
-        if (respone.data && respone.data.code === 0) {
-          this.liked = respone.data.liked.liked;
-          this.data.liked++;
-        }
-      });
+      ),
+        axios.post(`/api/news/isLiked/${id}`).then(respone => {
+          if (respone.data && respone.data.code === 0) {
+            this.liked = respone.data.liked.liked;
+            this.data.liked++;
+          }
+        });
     },
     comment(id) {
       if (this.content.length == 0) {
         return;
       }
-      /**
-       * 请求拦截
-       */
       axios.interceptors.request.use(
         config => {
           config.headers["Authorization"] =
@@ -290,34 +291,34 @@ export default {
         error => {
           return Promise.reject(error);
         }
-      );
-      axios
-        .post("/api/comment/create", {
-          content: this.content.substring(0, 120),
-          news_id: id
-        })
-        .then(respone => {
-          if (respone.data && respone.data.code === 0) {
-            this.$message({
-              message: respone.data.msg,
-              type: "success",
-              offset: 90,
-              duration: 1000
-            });
-            axios.get(`/api/commentList/${id}/0`).then(respone => {
-              this.commentList = respone.data.commentList;
-            });
-            this.user.comments++;
-          } else {
-            this.$message({
-              message: respone.data.msg,
-              type: "warning",
-              offset: 90,
-              duration: 1000
-            });
-          }
-          this.content = "";
-        });
+      ),
+        axios
+          .post("/api/comment/create", {
+            content: this.content.substring(0, 120),
+            news_id: id
+          })
+          .then(respone => {
+            if (respone.data && respone.data.code === 0) {
+              this.$message({
+                message: respone.data.msg,
+                type: "success",
+                offset: 90,
+                duration: 1000
+              });
+              axios.get(`/api/commentList/${id}/0`).then(respone => {
+                this.commentList = respone.data.commentList;
+              });
+              this.author.comments++;
+            } else {
+              this.$message({
+                message: respone.data.msg,
+                type: "warning",
+                offset: 90,
+                duration: 1000
+              });
+            }
+            this.content = "";
+          });
     },
     nextpage() {
       const id = this.$route.params.id;
@@ -361,9 +362,6 @@ export default {
     },
     like(id) {
       if (this.liked) return;
-      /**
-       * 请求拦截
-       */
       axios.interceptors.request.use(
         config => {
           config.headers["Authorization"] =
@@ -373,41 +371,39 @@ export default {
         error => {
           return Promise.reject(error);
         }
-      );
-      axios
-        .post("/api/news/like", {
-          news_id: id
-        })
-        .then(respone => {
-          if (respone.data && respone.data.code === 0) {
-            this.$message({
-              message: respone.data.msg,
-              type: "success",
-              offset: 90,
-              duration: 1000
-            });
-            this.liked = true;
-          } else {
-            this.$message({
-              message: respone.data.msg,
-              type: "warning",
-              offset: 90,
-              duration: 1000
-            });
-          }
-        });
+      ),
+        axios
+          .post("/api/news/like", {
+            news_id: id
+          })
+          .then(respone => {
+            if (respone.data && respone.data.code === 0) {
+              this.$message({
+                message: respone.data.msg,
+                type: "success",
+                offset: 90,
+                duration: 1000
+              });
+              this.liked = true;
+            } else {
+              this.$message({
+                message: respone.data.msg,
+                type: "warning",
+                offset: 90,
+                duration: 1000
+              });
+            }
+          });
     },
     useqrcode(id) {
       document.getElementById(id).style.display = "block";
       var canvas = document.getElementById(id);
-      QRCode.toCanvas(
-        canvas,
-        process.env.homeUrl + `/details/${id}`,
-        function(error) {
-          if (error) console.error(error);
-          document.getElementById(id).style.display = "block";
-        }
-      );
+      QRCode.toCanvas(canvas, process.env.homeUrl + `/details/${id}`, function(
+        error
+      ) {
+        if (error) console.error(error);
+        document.getElementById(id).style.display = "block";
+      });
     },
     deleteQrcode(id) {
       document.getElementById(id).style.display = "none";
