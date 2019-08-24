@@ -33,7 +33,7 @@
               </a>
             </li>-->
             <li class="num">
-              <a>
+              <a @click="toComment()">
                 <i class="layui-icon layui-icon-news-review2"></i>
                 <span>{{author.comments}}</span>
               </a>
@@ -163,6 +163,7 @@ import Sidebar from "@/components/sidebar";
 import "../../assets/hybrid.css";
 import Loading from "@/components/Loading";
 import QRCode from "qrcode";
+import $ from "jquery";
 
 dateFormat();
 export default {
@@ -240,15 +241,14 @@ export default {
     //设置延迟执行
     this.isLoading = false;
   },
-  beforeMount() {
-  },
+  beforeMount() {},
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
     if (window.loading) {
       window.loading.close();
     }
     this.token = this.$cookie.get("token"); // 判断是否登陆
-    this.userinfo = JSON.parse(this.$cookie.get('user'))
+    this.userinfo = JSON.parse(this.$cookie.get("user"));
     this.isLike(this.$route.params.id);
     this.getAuthorInfo(this.$route.params.id);
   },
@@ -407,6 +407,9 @@ export default {
     },
     deleteQrcode(id) {
       document.getElementById(id).style.display = "none";
+    },
+    toComment() {
+      $('html , body').animate({scrollTop: $('.detail-comment').offset().top}, 1000);
     }
   },
   beforeDestroy() {
