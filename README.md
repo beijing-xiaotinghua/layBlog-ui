@@ -17,7 +17,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 cnpm install
 ```
 ## 运行
-运行发开环境
+运行开发环境
 ```js
 npm run dev
 ```
