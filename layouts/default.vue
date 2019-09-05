@@ -41,7 +41,7 @@
                     <el-submenu index="2">
                       <template slot="title">
                         <a href="javascript:;">
-                          <img :src="userinfo.avatar" class="layui-nav-img" />
+                          <img :src="avatar" class="layui-nav-img" />
                         </a>
                       </template>
                       <el-menu-item index="2-3" class="el-icon-position" @click="logout">退出</el-menu-item>
@@ -66,6 +66,9 @@
 import axios from "axios";
 import marked from "marked";
 import { clearLoginInfo } from "@/utils/index";
+import crypto from 'crypto'
+import Identicon from 'identicon.js'
+
 export default {
   name: "app",
   data() {
@@ -74,7 +77,8 @@ export default {
       search: "",
       activeName: "",
       userinfo: {},
-      activeIndex: 1
+      activeIndex: 1,
+      avatar: ""
     };
   },
   created() {
@@ -88,8 +92,15 @@ export default {
     } else {
       this.activeName = this.$route.params.tag || this.$route.path.slice(1);
     }
+    this.getAvatarUrl();
   },
   methods: {
+    getAvatarUrl() {
+      let hash = crypto.createHash('md5')
+      hash.update('andyliwr'); // 传入用户名
+      let imgData = new Identicon(hash.digest('hex')).toString()
+      this.avatar = 'data:image/png;base64,'+ imgData // 这就是头像的base64码
+    },
     taglist() {
       axios.get("/api/category/list").then(respone => {
         const tagList = respone.data.data;

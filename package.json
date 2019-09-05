@@ -18,9 +18,11 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "crypto": "^1.0.1",
     "element-ui": "^2.3.6",
     "highlight.js": "^9.12.0",
     "html2canvas": "^1.0.0-rc.3",
+    "identicon.js": "^2.3.3",
     "jquery": "^3.4.1",
     "marked": "^0.3.19",
     "mobx": "^4.2.0",
