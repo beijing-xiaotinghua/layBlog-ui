@@ -41,7 +41,7 @@
                     <el-submenu index="2">
                       <template slot="title">
                         <a href="javascript:;">
-                          <img :src="avatar" class="layui-nav-img" />
+                          <img :src="avatar" v-if="avatar" class="layui-nav-img" />
                         </a>
                       </template>
                       <el-menu-item index="2-3" class="el-icon-position" @click="logout">退出</el-menu-item>
