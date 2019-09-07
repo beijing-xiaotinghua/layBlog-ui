@@ -2,8 +2,8 @@ const webpack = require('webpack')
 
 module.exports = {
   env: {
-    apiUrl: 'http://api.bw31d.com', // 后端api接口地址
-    homeUrl: 'https://bw31d.com' //前端域名
+    apiUrl: 'http://localhost:8099', // 后端api接口地址
+    homeUrl: 'https://localhost:3000' //前端域名
   },
   /*
   ** Headers of the page
@@ -81,6 +81,6 @@ module.exports = {
     '@nuxtjs/proxy'
   ],
   proxy: [
-    ['/api', { target: 'http://api.bw31d.com' }]
+    ['/api', { target: 'http://localhost:8099' }]
   ]
 }
