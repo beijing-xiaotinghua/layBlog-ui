@@ -4,14 +4,8 @@
   "description": "blog vue ssr",
   "author": "buptzlk",
   "private": true,
-  "config": {
-    "nuxt": {
-      "host": "127.0.0.1",
-      "port": "3001"
-    }
-  },
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --hostname localhost --port 3001",
     "build": "nuxt build",
     "start": "nuxt start",
     "server": "npm run build && pm2 delete blog && pm2 start npm --name 'blog' -- start",
