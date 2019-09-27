@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt && nuxt build",
-    "start": "nuxt && nuxt start",
+    "build": "nuxt build",
+    "start": "nuxt start",
     "server": "npm run build && pm2 delete blog && pm2 start npm --name 'blog' -- start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
