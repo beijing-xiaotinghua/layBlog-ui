@@ -43,6 +43,13 @@ cnpm install -g pm2
 ```
 pm2 start ./node_modules/nuxt/bin/nuxt -- start
 ```
+#### 如何在同一个服务器上运行两个node进程
+
+开启新的端口
+
+```
+pm2 start ./node_modules/nuxt/bin/nuxt --name 'layblog' -- --hostname localhost --port 3001
+```
 #### pm2查看项目列表
 ```
 pm2 list
