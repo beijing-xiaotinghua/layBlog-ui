@@ -29,6 +29,7 @@
         <a href="/user/register" style="float:right">注册</a>
       </p>
       <button class="layui-btn" lay-submit @click="login">登录</button>
+      <p class="terms"><a href="/user/find-password" style="float:right">忘记密码？去找回</a></p>
     </div>
   </div>
 </template>

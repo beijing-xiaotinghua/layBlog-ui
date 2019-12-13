@@ -243,7 +243,7 @@ body,html{height: 100%;}
 .news-login{height: 100%; text-align: center; background-size: cover;}
 .news-login a.title{display: inline-block; width: 180px; padding-top: 15%; padding-bottom: 50px;}
 .news-login img{width: 80px;margin-top: 40px;}
-.news-login .layui-form{margin: 0 auto; width: 450px; height: 355px; padding: 60px 40px 15px; background-color: #FFF; box-shadow: 0 0 5px 5px rgba(0,0,0,0.05);}
+.news-login .layui-form{margin: 0 auto; width: 450px; height: 450px; padding: 60px 40px 15px; background-color: #FFF; box-shadow: 0 0 5px 5px rgba(0,0,0,0.05);}
 .news-login .layui-form .layui-input-block{margin-left: 0; margin-top: 20px; line-height: 40px;}
 .news-login .layui-form .layui-input-block:first-child{margin-top: 0;}
 .news-login .layui-form .layui-input-block input{height: 42px; color: #999;}
