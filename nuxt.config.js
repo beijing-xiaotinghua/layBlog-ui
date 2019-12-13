@@ -1,13 +1,9 @@
 const webpack = require('webpack')
 
 module.exports = {
-  server: {
-    port: 3001, // default: 3000
-    host: '0.0.0.0', // default: localhost
-  },
   env: {
     apiUrl: 'http://blog.layadmin.cn', // 后端api接口地址
-    homeUrl: 'https://localhost:3001' //前端域名
+    homeUrl: 'https://localhost:3000' //前端域名
   },
   /*
   ** Headers of the page
