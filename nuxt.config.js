@@ -1,9 +1,13 @@
 const webpack = require('webpack')
 
 module.exports = {
+  server: {
+    port: 3001, // default: 3000
+    host: '0.0.0.0', // default: localhost
+  },
   env: {
-    apiUrl: 'http://localhost:8099', // 后端api接口地址
-    homeUrl: 'https://localhost:3000' //前端域名
+    apiUrl: 'http://blog.layadmin.cn', // 后端api接口地址
+    homeUrl: 'https://localhost:3001' //前端域名
   },
   /*
   ** Headers of the page
@@ -81,6 +85,6 @@ module.exports = {
     '@nuxtjs/proxy'
   ],
   proxy: [
-    ['/api', { target: 'http://localhost:8099' }]
+    ['/api', { target: 'http://blog.layadmin.cn' }]
   ]
 }
